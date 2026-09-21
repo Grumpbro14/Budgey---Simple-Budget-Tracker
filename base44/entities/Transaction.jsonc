@@ -1,0 +1,56 @@
+{
+  "name": "Transaction",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "income",
+        "expense"
+      ],
+      "description": "Whether money came in or went out"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Transaction amount in the user's currency",
+      "minimum": 0
+    },
+    "category": {
+      "type": "string",
+      "description": "Category id from the budget categories list"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short note about the transaction"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the transaction occurred"
+    },
+    "savings_goal_id": {
+      "type": "string",
+      "description": "SavingsGoal this transaction contributes to (when category is savings)"
+    }
+  },
+  "required": [
+    "type",
+    "amount",
+    "category",
+    "date"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "Loan",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Loan name or description"
+    },
+    "principal": {
+      "type": "number",
+      "description": "Original loan amount",
+      "minimum": 0
+    },
+    "interest_rate": {
+      "type": "number",
+      "description": "Annual interest rate in percent (Premium only)",
+      "minimum": 0,
+      "default": 0
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "borrowed",
+        "lent"
+      ],
+      "description": "Whether you borrowed the money or lent it out"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the loan started"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional notes about the loan"
+    }
+  },
+  "required": [
+    "name",
+    "principal",
+    "type",
+    "start_date"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

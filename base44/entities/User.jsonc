@@ -1,0 +1,45 @@
+{
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "The role of the user in the app",
+      "enum": [
+        "admin",
+        "user"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name shown in greetings and profile"
+    },
+    "theme": {
+      "type": "string",
+      "description": "Preferred light/dark theme",
+      "enum": [
+        "light",
+        "dark"
+      ],
+      "default": "light"
+    },
+    "color_theme": {
+      "type": "string",
+      "description": "Premium color theme id (applied only when Premium is active)",
+      "default": "default"
+    },
+    "premium_mode_enabled": {
+      "type": "boolean",
+      "description": "Display toggle for Premium features; does not affect the permanent purchase status",
+      "default": true
+    },
+    "timezone": {
+      "type": "string",
+      "description": "IANA timezone string (e.g. America/Los_Angeles) used by scheduled reminder and summary emails",
+      "default": "UTC"
+    }
+  },
+  "required": [
+    "role"
+  ],
+  "name": "User",
+  "type": "object"
+}

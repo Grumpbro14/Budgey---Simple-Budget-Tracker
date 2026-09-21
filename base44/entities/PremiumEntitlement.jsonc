@@ -1,0 +1,66 @@
+{
+  "name": "PremiumEntitlement",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "The app user who owns Budgey Pro"
+    },
+    "purchase_id": {
+      "type": "string",
+      "description": "Base44Purchase id that granted this entitlement (for audit / idempotency)"
+    },
+    "purchased_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the first Pro purchase was confirmed by the payment provider"
+    },
+    "is_permanent": {
+      "type": "boolean",
+      "description": "True when Pro is unlocked forever (lifetime purchase, or total_paid >= 20)",
+      "default": false
+    },
+    "plan_type": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "lifetime"
+      ],
+      "description": "Which purchase path granted this entitlement"
+    },
+    "total_paid": {
+      "type": "number",
+      "description": "Cumulative dollars paid toward Pro via $5 installments",
+      "default": 0,
+      "minimum": 0
+    },
+    "pro_until": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When temporary Pro access expires (ignored when is_permanent is true)"
+    }
+  },
+  "required": [
+    "user_id"
+  ],
+  "rls": {
+    "read": {
+      "data.user_id": "{{user.id}}"
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

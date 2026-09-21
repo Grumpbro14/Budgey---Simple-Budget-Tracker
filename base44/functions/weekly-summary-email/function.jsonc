@@ -1,0 +1,15 @@
+{
+  "name": "weekly-summary-email",
+  "entry": "entry.ts",
+  "automations": [
+    {
+      "type": "scheduled",
+      "name": "weekly_summary_monday",
+      "description": "Sends each user a weekly spending + upcoming bills summary email every Monday at 9:00 UTC",
+      "is_active": true,
+      "schedule_mode": "recurring",
+      "schedule_type": "cron",
+      "cron_expression": "0 9 * * 1"
+    }
+  ]
+}

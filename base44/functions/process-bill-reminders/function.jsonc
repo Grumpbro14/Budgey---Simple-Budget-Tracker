@@ -1,0 +1,15 @@
+{
+  "name": "process-bill-reminders",
+  "entry": "entry.ts",
+  "automations": [
+    {
+      "type": "scheduled",
+      "name": "hourly_reminder_check",
+      "description": "Checks for bills due tomorrow and sends reminders every hour",
+      "is_active": true,
+      "schedule_mode": "recurring",
+      "schedule_type": "cron",
+      "cron_expression": "0 * * * ?"
+    }
+  ]
+}

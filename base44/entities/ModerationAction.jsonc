@@ -1,0 +1,75 @@
+{
+  "name": "ModerationAction",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Target app user id"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "Target user email (denormalized for display)"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "Target user display name (denormalized for display)"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "violation",
+        "suspend",
+        "ban",
+        "premium_grant"
+      ],
+      "description": "Kind of moderation action"
+    },
+    "reason": {
+      "type": "string",
+      "description": "What the person did / reason for the action"
+    },
+    "severity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 0,
+      "description": "How bad the violation was, 0-100"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When a suspension ends (for type=suspend)"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this action is currently in effect"
+    }
+  },
+  "required": [
+    "user_id",
+    "type"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

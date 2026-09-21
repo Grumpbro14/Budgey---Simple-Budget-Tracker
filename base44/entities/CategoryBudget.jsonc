@@ -1,0 +1,38 @@
+{
+  "name": "CategoryBudget",
+  "type": "object",
+  "properties": {
+    "category": {
+      "type": "string",
+      "description": "Category id this budget limit applies to"
+    },
+    "limit": {
+      "type": "number",
+      "description": "Monthly spending limit for this category",
+      "minimum": 0
+    },
+    "month": {
+      "type": "string",
+      "description": "Month the budget applies to, formatted YYYY-MM"
+    }
+  },
+  "required": [
+    "category",
+    "limit",
+    "month"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

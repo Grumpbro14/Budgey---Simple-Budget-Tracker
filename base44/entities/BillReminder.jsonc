@@ -1,0 +1,83 @@
+{
+  "name": "BillReminder",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Bill name (e.g. Phone Bill, Rent, Car Payment)"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Bill amount in the user's currency",
+      "minimum": 0
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the bill is due"
+    },
+    "recurring": {
+      "type": "string",
+      "enum": [
+        "none",
+        "weekly",
+        "monthly",
+        "yearly"
+      ],
+      "default": "none",
+      "description": "Recurring schedule for the bill"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional notes about the bill"
+    },
+    "reminder_enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether reminders are active for this bill"
+    },
+    "reminder_method": {
+      "type": "string",
+      "enum": [
+        "push",
+        "email",
+        "both"
+      ],
+      "default": "email",
+      "description": "How the user wants to be reminded: push (in-app), email, or both"
+    },
+    "reminder_sent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the reminder has been sent for the current billing cycle (prevents duplicates)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "paid"
+      ],
+      "default": "active",
+      "description": "Whether the bill is active or paid/completed"
+    }
+  },
+  "required": [
+    "name",
+    "amount",
+    "due_date"
+  ],
+  "rls": {
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

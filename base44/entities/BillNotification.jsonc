@@ -1,0 +1,60 @@
+{
+  "name": "BillNotification",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "The app user who owns this notification"
+    },
+    "bill_id": {
+      "type": "string",
+      "description": "The BillReminder this notification is about"
+    },
+    "title": {
+      "type": "string",
+      "description": "Notification title text"
+    },
+    "body": {
+      "type": "string",
+      "description": "Notification body text"
+    },
+    "bill_name": {
+      "type": "string",
+      "description": "Name of the bill (denormalized for display)"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Amount of the bill (denormalized for display)"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Due date of the bill (denormalized for display)"
+    },
+    "read": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the user has seen this notification"
+    }
+  },
+  "required": [
+    "user_id",
+    "title"
+  ],
+  "rls": {
+    "read": {
+      "data.user_id": "{{user.id}}"
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "data.user_id": "{{user.id}}"
+    },
+    "delete": {
+      "data.user_id": "{{user.id}}"
+    }
+  }
+}

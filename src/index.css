@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 9% 98%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 16 90% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 60 9% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 32 90% 52%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 72% 52%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 150 42% 42%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 90% 52%;
+    --warning-foreground: 0 0% 10%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 16 90% 52%;
+    --chart-1: 14 82% 54%;
+    --chart-2: 32 88% 52%;
+    --chart-3: 28 80% 56%;
+    --chart-4: 210 70% 55%;
+    --chart-5: 265 60% 62%;
+    --radius: 0.75rem;
+    --font-heading: "Roboto", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Roboto", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Roboto", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 40 20% 96%;
+    --card: 0 0% 14%;
+    --card-foreground: 40 20% 96%;
+    --popover: 0 0% 14%;
+    --popover-foreground: 40 20% 96%;
+    --primary: 14 85% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 40 20% 96%;
+    --muted: 0 0% 17%;
+    --muted-foreground: 40 10% 70%;
+    --accent: 32 88% 56%;
+    --accent-foreground: 20 14% 10%;
+    --destructive: 0 70% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 150 44% 50%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 90% 58%;
+    --warning-foreground: 20 14% 10%;
+    --border: 0 0% 22%;
+    --input: 0 0% 22%;
+    --ring: 14 85% 58%;
+    --chart-1: 14 85% 58%;
+    --chart-2: 32 86% 58%;
+    --chart-3: 28 78% 62%;
+    --chart-4: 210 70% 60%;
+    --chart-5: 265 60% 68%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    font-family: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Modernize legacy cartoony utilities globally */
+  .font-black { font-weight: 700; }
+  .rounded-3xl { border-radius: 1.25rem; }
+  .rounded-2xl { border-radius: 0.875rem; }
+  .border-2 { border-width: 1px; }
+
+  .shadow-cartoon {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .dark .shadow-cartoon {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .shadow-cartoon-hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .dark .shadow-cartoon-hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.3);
+  }
+
+  .shadow-pop {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);
+  }
+  .dark .shadow-pop {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35), 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.08), 0 4px 16px hsl(var(--primary) / 0.12);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .shimmer {
+    background-image: linear-gradient(90deg, transparent 0%, hsl(var(--foreground) / 0.06) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .bg-grid {
+    background-image: none;
+  }
+}
+
+/* Smooth theme transition */
+html.theme-transition,
+html.theme-transition * {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+}
+
+/* Legal page content */
+.legal-content h2 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: hsl(var(--foreground));
+}
+.legal-content h3 {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: hsl(var(--foreground));
+}
+.legal-content p {
+  color: hsl(var(--muted-foreground));
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.legal-content ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+.legal-content li {
+  color: hsl(var(--muted-foreground));
+  line-height: 1.7;
+  margin-bottom: 0.25rem;
+}
+.legal-content strong {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+/* Mobile: lock zoom & panning, prevent overscroll, fit any phone (desktop untouched) */
+@media (pointer: coarse) {
+  html, body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    touch-action: manipulation;
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    position: fixed;
+    inset: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  img {
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
+}
+
+/* Fit every phone width: no horizontal overflow, fluid sizing (desktop untouched) */
+@media (max-width: 640px) {
+  #root {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  main, header > div, footer {
+    max-width: 100% !important;
+    width: 100%;
+  }
+  /* Prevent any element from forcing horizontal scroll */
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  /* Fluid headings that shrink on tiny screens */
+  h1 {
+    font-size: clamp(1.375rem, 6vw, 1.5rem);
+  }
+  h2 {
+    font-size: clamp(0.95rem, 4vw, 1.125rem);
+  }
+  /* Keep buttons & inputs reachable on small phones */
+  button, a, input, select, textarea {
+    min-height: 36px;
+  }
+  /* Allow internal scroll areas to scroll, not overflow the page */
+  .overflow-x-auto, [class*="overflow-x"] {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.5); }
